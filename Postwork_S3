@@ -1,0 +1,31 @@
+head(data)
+
+nmatches<-length(data[,1])
+
+##Home Team
+LocalGoals <- table(data$FTHG)
+ProbLocalGoals <- LocalGoals[1:length(LocalGoals)]/nmatches
+LocalProbs <- data.frame(Freq = LocalGoals, Prob = ProbLocalGoals)
+LocalProbs <- LocalProbs[, -c(3)]
+LocalProbs <- rename(LocalProbs, Goals =Freq.Var1, Freq = Freq.Freq, Prob = Prob.Freq)
+
+##Away Team
+AwayGoals <- table(data$FTAG)
+ProbAwayGoals <- AwayGoals[1:length(AwayGoals)]/nmatches
+AwayProbs <- data.frame(Freq = AwayGoals, Prob = ProbAwayGoals)
+AwayProbs <- AwayProbs[, -c(3)]
+AwayProbs <- rename(AwayProbs, Goals =Freq.Var1, Freq = Freq.Freq, Prob = Prob.Freq)
+
+##Tabla conjunta
+local<-LocalGoals$Goals
+visitante <-AwayGoals$Goals
+#Crear las posibles combinaciones de x y y
+combinaciones<-expand.grid(local,visitante)
+combinaciones <- rename(combinaciones, Local.Goals=LGoals, Away.Goals=AGoals, Freq.Conj=FConj)
+
+##Dat.Frame
+for(i in nmatches){
+  for(j in nmatches(combinaciones[,1]){
+    if((data[i]))
+  })
+}
